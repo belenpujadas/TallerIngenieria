@@ -1,0 +1,18 @@
+[
+  {
+    "id": "RS-1001",
+    "nombre": "María González",
+    "origen": "Montevideo, Uruguay",
+    "puntuacion": 5,
+    "comentario": "La ubicación es soñada y el equipo nos hizo sentir como en casa. El desayuno mirando el mar fue lo mejor del viaje.",
+    "fecha": "2026-06-18T12:00:00.000Z"
+  },
+  {
+    "id": "RS-1002",
+    "nombre": "Rodrigo Pereira",
+    "origen": "Buenos Aires, Argentina",
+    "puntuacion": 5,
+    "comentario": "Habitaciones impecables, piscina tranquila y excelente atención. Volveríamos sin dudarlo.",
+    "fecha": "2026-07-02T12:00:00.000Z"
+  }
+]
