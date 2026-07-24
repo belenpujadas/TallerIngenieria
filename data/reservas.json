@@ -1,5 +1,31 @@
 [
   {
+    "id": "LG-56216305",
+    "nombre": "Santiago Brikman",
+    "email": "santiagobrikman@gmail.com",
+    "telefono": "+598 94 265 677",
+    "entrada": "2026-07-23",
+    "salida": "2026-07-30",
+    "habitacion": "Habitación Doble",
+    "huespedes": 2,
+    "pago": "Efectivo",
+    "estado": "Confirmada",
+    "creada": "2026-07-24T01:23:36.305Z"
+  },
+  {
+    "id": "LG-56188125",
+    "nombre": "Santiago Brikman",
+    "email": "santiagobrikman@gmail.com",
+    "telefono": "+598 94 265 677",
+    "entrada": "2026-07-23",
+    "salida": "2026-07-30",
+    "habitacion": "Habitación Doble",
+    "huespedes": 2,
+    "pago": "Tarjeta",
+    "estado": "Confirmada",
+    "creada": "2026-07-24T01:23:08.126Z"
+  },
+  {
     "id": "LG-1001",
     "nombre": "María González",
     "email": "maria.gonzalez@email.com",
@@ -9,7 +35,7 @@
     "habitacion": "Habitación con Jardín",
     "huespedes": 2,
     "pago": "Tarjeta",
-    "estado": "Confirmada",
+    "estado": "Cancelada",
     "creada": "2026-07-20T14:30:00.000Z"
   },
   {

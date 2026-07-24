@@ -1,25 +1,8 @@
-const CLAVE_RESERVAS = "las-gaviotas-reservas";
 const CLAVE_RESENAS = "las-gaviotas-resenas";
 const formReserva = document.querySelector("#form-reserva");
 const modalReservaElement = document.querySelector("#modalReserva");
 const formResena = document.querySelector("#form-resena");
 const listaResenas = document.querySelector("#lista-resenas");
-
-const cargarReservasIniciales = async () => {
-  const guardadas = localStorage.getItem(CLAVE_RESERVAS);
-  if (guardadas) return JSON.parse(guardadas);
-
-  try {
-    const respuesta = await fetch("data/reservas.json");
-    if (!respuesta.ok) throw new Error("No se pudieron cargar las reservas.");
-    const reservas = await respuesta.json();
-    localStorage.setItem(CLAVE_RESERVAS, JSON.stringify(reservas));
-    return reservas;
-  } catch {
-    localStorage.setItem(CLAVE_RESERVAS, "[]");
-    return [];
-  }
-};
 
 if (formReserva && modalReservaElement) {
   const modalReserva = new bootstrap.Modal(modalReservaElement);
@@ -35,8 +18,6 @@ if (formReserva && modalReservaElement) {
     return formatoFecha.format(new Date(Date.UTC(anio, mes - 1, dia)));
   };
 
-  cargarReservasIniciales();
-
   formReserva.addEventListener("submit", async (evento) => {
     evento.preventDefault();
 
@@ -46,9 +27,7 @@ if (formReserva && modalReservaElement) {
     }
 
     const datos = new FormData(formReserva);
-    const reservas = await cargarReservasIniciales();
-    const nuevaReserva = {
-      id: `LG-${Date.now().toString().slice(-6)}`,
+    const solicitud = {
       nombre: datos.get("nombre"),
       email: datos.get("email"),
       telefono: datos.get("telefono"),
@@ -57,22 +36,38 @@ if (formReserva && modalReservaElement) {
       habitacion: datos.get("habitacion"),
       huespedes: Number(datos.get("huespedes")),
       pago: datos.get("pago"),
-      estado: "Confirmada",
-      creada: new Date().toISOString(),
     };
 
-    reservas.unshift(nuevaReserva);
-    localStorage.setItem(CLAVE_RESERVAS, JSON.stringify(reservas));
+    const botonEnviar = formReserva.querySelector('button[type="submit"]');
+    const mensajeReserva = document.querySelector("#mensaje-reserva");
+    botonEnviar.disabled = true;
+    botonEnviar.textContent = "Guardando reserva...";
+    mensajeReserva.textContent = "";
 
-    document.querySelector("#confirmacion-nombre").textContent = nuevaReserva.nombre;
-    document.querySelector("#confirmacion-habitacion").textContent = nuevaReserva.habitacion;
-    document.querySelector("#confirmacion-fechas").textContent =
-      `${formatearFecha(nuevaReserva.entrada)} — ${formatearFecha(nuevaReserva.salida)}`;
-    document.querySelector("#confirmacion-huespedes").textContent =
-      `${nuevaReserva.huespedes} ${nuevaReserva.huespedes === 1 ? "persona" : "personas"}`;
+    try {
+      const respuesta = await fetch("/api/reservas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(solicitud),
+      });
+      if (!respuesta.ok) throw new Error("No se pudo guardar la reserva.");
+      const nuevaReserva = await respuesta.json();
 
-    modalReserva.show();
-    formReserva.reset();
+      document.querySelector("#confirmacion-nombre").textContent = nuevaReserva.nombre;
+      document.querySelector("#confirmacion-habitacion").textContent = nuevaReserva.habitacion;
+      document.querySelector("#confirmacion-fechas").textContent =
+        `${formatearFecha(nuevaReserva.entrada)} — ${formatearFecha(nuevaReserva.salida)}`;
+      document.querySelector("#confirmacion-huespedes").textContent =
+        `${nuevaReserva.huespedes} ${nuevaReserva.huespedes === 1 ? "persona" : "personas"}`;
+
+      modalReserva.show();
+      formReserva.reset();
+    } catch {
+      mensajeReserva.textContent = "No pudimos guardar la reserva. Verificá que el servidor esté iniciado.";
+    } finally {
+      botonEnviar.disabled = false;
+      botonEnviar.innerHTML = 'Solicitar reserva <i class="bi bi-arrow-right"></i>';
+    }
   });
 }
 

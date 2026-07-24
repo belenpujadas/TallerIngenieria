@@ -1,4 +1,3 @@
-const CLAVE_RESERVAS = "las-gaviotas-reservas";
 const CLAVE_SESION = "las-gaviotas-admin";
 const vistaLogin = document.querySelector("#vista-login");
 const vistaPanel = document.querySelector("#vista-panel");
@@ -27,14 +26,9 @@ const formatearFecha = (fecha) => {
 };
 
 const cargarReservas = async () => {
-  const guardadas = localStorage.getItem(CLAVE_RESERVAS);
-  if (guardadas) return JSON.parse(guardadas);
-
-  const respuesta = await fetch("data/reservas.json");
+  const respuesta = await fetch("/api/reservas", { cache: "no-store" });
   if (!respuesta.ok) throw new Error("No se pudo cargar la base de reservas.");
-  const reservas = await respuesta.json();
-  localStorage.setItem(CLAVE_RESERVAS, JSON.stringify(reservas));
-  return reservas;
+  return respuesta.json();
 };
 
 const mostrarPanel = (usuario) => {
@@ -111,13 +105,27 @@ tablaReservas.addEventListener("click", async (evento) => {
 
 document.querySelector("#confirmar-cancelacion").addEventListener("click", async () => {
   if (!reservaSeleccionada) return;
-  const reservas = await cargarReservas();
-  const reserva = reservas.find((item) => item.id === reservaSeleccionada.id);
-  if (reserva) reserva.estado = "Cancelada";
-  localStorage.setItem(CLAVE_RESERVAS, JSON.stringify(reservas));
-  reservaSeleccionada = null;
-  modalCancelar.hide();
-  renderizarReservas();
+  const boton = document.querySelector("#confirmar-cancelacion");
+  boton.disabled = true;
+  boton.textContent = "Cancelando...";
+
+  try {
+    const respuesta = await fetch(
+      `/api/reservas/${encodeURIComponent(reservaSeleccionada.id)}/cancelar`,
+      { method: "PATCH" },
+    );
+    if (!respuesta.ok) throw new Error("No se pudo cancelar la reserva.");
+    reservaSeleccionada = null;
+    modalCancelar.hide();
+    await renderizarReservas();
+  } catch {
+    boton.textContent = "No se pudo cancelar";
+  } finally {
+    boton.disabled = false;
+    setTimeout(() => {
+      boton.textContent = "Sí, cancelar reserva";
+    }, 1200);
+  }
 });
 
 document.querySelector("#cerrar-sesion").addEventListener("click", () => {
