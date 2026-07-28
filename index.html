@@ -239,6 +239,16 @@
                   </select>
                 </div>
                 <div class="col-12">
+                  <label for="servicios-extra" class="form-label">Servicios adicionales</label>
+                  <select id="servicios-extra" name="servicios" class="form-select services-multiselect" multiple aria-describedby="ayuda-servicios">
+                    <option value="Desayuno buffet">Desayuno buffet</option>
+                    <option value="Traslado al aeropuerto">Traslado al aeropuerto</option>
+                    <option value="Estacionamiento">Estacionamiento</option>
+                    <option value="Limpieza adicional">Limpieza adicional</option>
+                  </select>
+                  <small id="ayuda-servicios" class="multiselect-help"><i class="bi bi-info-circle"></i> Podés seleccionar más de una opción manteniendo presionada la tecla Ctrl o Cmd.</small>
+                </div>
+                <div class="col-12">
                   <button class="btn btn-primary w-100" type="submit">Solicitar reserva <i class="bi bi-arrow-right"></i></button>
                   <p class="form-note"><i class="bi bi-lock"></i> Tus datos se utilizan únicamente para gestionar la reserva.</p>
                   <div id="mensaje-reserva" class="form-message" role="status"></div>
@@ -334,6 +344,10 @@
                 <i class="bi bi-people"></i>
                 <span><small>Huéspedes</small><strong id="confirmacion-huespedes"></strong></span>
               </div>
+              <div>
+                <i class="bi bi-stars"></i>
+                <span><small>Servicios adicionales</small><strong id="confirmacion-servicios"></strong></span>
+              </div>
             </div>
             <p class="modal-next-step"><i class="bi bi-envelope-check"></i> En breve nos comunicaremos por correo electrónico para confirmar la disponibilidad.</p>
             <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">Entendido</button>
@@ -343,6 +357,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/storage.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>

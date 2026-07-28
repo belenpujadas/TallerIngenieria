@@ -87,6 +87,11 @@ a { color: inherit; }
 .form-label, .rating-field legend { margin-bottom: 6px; color: var(--navy); font-size: .82rem; font-weight: 700; }
 .form-control, .form-select { min-height: 48px; border: 1px solid #ccd8d6; border-radius: 3px; background-color: white; }
 .form-control:focus, .form-select:focus { border-color: var(--turquoise); box-shadow: 0 0 0 .2rem rgba(15,143,147,.13); }
+.services-multiselect { min-height: 134px; padding: 7px; }
+.services-multiselect option { margin-bottom: 3px; padding: 8px 10px; border-radius: 3px; color: var(--ink); }
+.services-multiselect option:checked { color: white; background: linear-gradient(var(--turquoise), var(--turquoise)); }
+.multiselect-help { display: block; margin-top: 7px; color: var(--muted); font-size: .72rem; }
+.multiselect-help i { margin-right: 4px; color: var(--turquoise-dark); }
 .form-note { margin: 12px 0 0; color: var(--muted); font-size: .72rem; text-align: center; }
 .form-message { margin-top: 8px; font-size: .85rem; text-align: center; }
 .form-message.success { color: var(--turquoise-dark); font-weight: 700; }
@@ -194,3 +199,8 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+.mockup-reserva .site-header,
+.mockup-reserva main > section:not(#reservas),
+.mockup-reserva .site-footer { display: none; }
+.mockup-reserva .booking-section { min-height: 0; padding: 0; background: #eef4f3; }

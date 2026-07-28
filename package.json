@@ -1,9 +1,0 @@
-{
-  "name": "hotel-las-gaviotas",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Sitio web y administración de reservas del Hotel Las Gaviotas",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
