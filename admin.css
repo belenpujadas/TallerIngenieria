@@ -1,14 +1,12 @@
 .admin-body { min-height: 100vh; background: #eef4f3; }
-.login-view { display: grid; min-height: 100vh; grid-template-columns: minmax(360px, .85fr) 1.4fr; }
-.login-brand-panel { position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 54px; color: white; background: linear-gradient(145deg, rgba(12,47,61,.95), rgba(8,114,119,.82)), url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80") center/cover; }
-.login-brand-panel::after { position: absolute; right: -100px; bottom: -130px; width: 360px; height: 360px; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; content: ""; }
-.login-brand-panel > * { position: relative; z-index: 1; }
-.login-brand-panel .eyebrow { color: #9fe0da; }
-.login-brand-panel h1 { margin: 0; font-size: clamp(2.8rem, 5vw, 5rem); line-height: 1; }
-.login-brand-panel div > p:last-child { margin: 22px 0 0; color: rgba(255,255,255,.7); }
-.back-link { color: white; font-weight: 600; text-decoration: none; }
+.login-view { position: relative; display: grid; min-height: 100vh; place-items: center; background: var(--cream); }
+.login-page-logo { position: absolute; z-index: 2; top: 44px; left: 54px; color: var(--navy); }
+.login-page-logo > i { width: 52px; height: 52px; font-size: 1.5rem; }
+.login-page-logo strong { font-size: 1.5rem; }
+.login-page-logo small { color: var(--navy-soft); }
+.back-link { position: absolute; bottom: 54px; left: 54px; color: var(--navy); font-weight: 600; text-decoration: none; }
 .back-link i { margin-right: 8px; }
-.login-form-panel { display: grid; padding: 40px; place-items: center; background: var(--cream); }
+.login-form-panel { display: grid; width: 100%; min-height: 100vh; padding: 120px 40px; place-items: center; }
 .login-form { width: min(100%, 420px); padding: 45px; background: white; box-shadow: var(--shadow); }
 .login-icon { display: grid; width: 54px; height: 54px; margin-bottom: 24px; place-items: center; border-radius: 50%; color: var(--turquoise-dark); background: #ddf0ed; font-size: 1.35rem; }
 .login-form h2 { font-size: 2.5rem; }
@@ -71,14 +69,18 @@
 .cancel-actions .btn { flex: 1; }
 
 @media (max-width: 991.98px) {
-  .login-view { grid-template-columns: 1fr; }
-  .login-brand-panel { min-height: 340px; padding: 36px; }
-  .login-form-panel { padding: 60px 24px; }
+  .login-page-logo { top: 36px; left: 36px; }
+  .back-link { bottom: 36px; left: 36px; }
+  .login-form-panel { padding: 120px 24px 100px; }
   .admin-title { align-items: flex-start; flex-direction: column; }
 }
 
 @media (max-width: 575.98px) {
-  .login-brand-panel { min-height: 300px; padding: 26px 24px; }
+  .login-page-logo { top: 24px; left: 24px; }
+  .login-page-logo > i { width: 44px; height: 44px; font-size: 1.25rem; }
+  .login-page-logo strong { font-size: 1.2rem; }
+  .back-link { bottom: 26px; left: 24px; }
+  .login-form-panel { padding: 105px 18px 90px; }
   .login-form { padding: 30px 24px; }
   .admin-header .container-fluid, .admin-content { padding-right: 18px; padding-left: 18px; }
   .admin-user span { display: none; }
