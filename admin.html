@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Administración de reservas del Hotel Las Gaviotas." />
+    <title>Administración | Hotel Las Gaviotas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body class="admin-body">
+    <main>
+      <section id="vista-login" class="login-view">
+        <a class="footer-brand login-page-logo" href="index.html">
+          <i class="bi bi-water"></i>
+          <span><strong>Las Gaviotas</strong><small>Hotel &amp; Beach</small></span>
+        </a>
+        <div class="login-form-panel">
+          <form id="form-login" class="login-form">
+            <span class="login-icon"><i class="bi bi-person-lock"></i></span>
+            <h2>Iniciar sesión</h2>
+            <p>Ingresá tus credenciales para ver las reservas.</p>
+            <label for="usuario" class="form-label">Usuario</label>
+            <div class="input-icon">
+              <i class="bi bi-person"></i>
+              <input id="usuario" name="usuario" class="form-control" type="text" autocomplete="username" required />
+            </div>
+            <label for="clave" class="form-label">Contraseña</label>
+            <div class="input-icon">
+              <i class="bi bi-lock"></i>
+              <input id="clave" name="clave" class="form-control" type="password" autocomplete="current-password" required />
+            </div>
+            <p id="mensaje-login" class="login-message" role="alert"></p>
+            <button class="btn btn-primary w-100" type="submit">Ingresar <i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+        <a class="back-link" href="index.html"><i class="bi bi-arrow-left"></i> Volver al sitio</a>
+      </section>
+
+      <section id="vista-panel" class="admin-panel d-none">
+        <header class="admin-header">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <span class="brand-icon"><i class="bi bi-water"></i></span>
+              <span><strong>Las Gaviotas</strong><small>Administración</small></span>
+            </a>
+            <div class="admin-user">
+              <span><small>Sesión iniciada como</small><strong id="nombre-admin">Carolina</strong></span>
+              <button id="cerrar-sesion" class="btn btn-outline-admin" type="button"><i class="bi bi-box-arrow-right"></i> Salir</button>
+            </div>
+          </div>
+        </header>
+
+        <div class="admin-content container-fluid">
+          <div class="admin-title">
+            <div><p class="eyebrow">Panel de administración</p><h1>Reservas</h1><p>Consultá los datos recibidos y cancelá reservas cuando sea necesario.</p></div>
+            <div class="reservation-count"><span id="cantidad-activas">0</span><small>reservas activas</small></div>
+          </div>
+
+          <div class="table-shell">
+            <div class="table-toolbar">
+              <div><h2>Listado de reservas</h2><p id="cantidad-total">0 registros en total</p></div>
+              <span class="data-indicator"><i class="bi bi-database-check"></i> Datos actualizados</span>
+            </div>
+            <div class="table-responsive">
+              <table class="table admin-table align-middle">
+                <thead>
+                  <tr>
+                    <th>Reserva</th>
+                    <th>Huésped</th>
+                    <th>Contacto</th>
+                    <th>Estadía</th>
+                    <th>Habitación</th>
+                    <th>Personas</th>
+                    <th>Pago</th>
+                    <th>Servicios</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-reservas"></tbody>
+              </table>
+            </div>
+            <div id="sin-reservas" class="empty-state d-none"><i class="bi bi-calendar2-x"></i><h3>No hay reservas</h3><p>Las nuevas solicitudes aparecerán aquí.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal fade cancel-modal" id="modalCancelar" tabindex="-1" aria-labelledby="tituloCancelar" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <span class="cancel-icon"><i class="bi bi-calendar-x"></i></span>
+            <p class="eyebrow">Confirmar acción</p>
+            <h2 id="tituloCancelar">¿Cancelar esta reserva?</h2>
+            <p>La reserva <strong id="cancelar-id"></strong> de <strong id="cancelar-nombre"></strong> quedará marcada como cancelada.</p>
+            <div class="cancel-actions">
+              <button class="btn btn-light" type="button" data-bs-dismiss="modal">Volver</button>
+              <button id="confirmar-cancelacion" class="btn btn-danger" type="button">Sí, cancelar reserva</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/storage.js"></script>
+    <script src="src/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mockup simple — Formulario de reservas</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; color: #222; background: #fff; font-family: Arial, sans-serif; }
+      .page { width: 1200px; min-height: 760px; margin: 0 auto; padding: 44px 54px; }
+      .context { margin: 0 0 8px; color: #666; font-size: 13px; text-transform: uppercase; }
+      h1 { margin: 0 0 8px; font-size: 30px; }
+      .intro { margin: 0 0 30px; color: #555; font-size: 15px; }
+      .wireframe { padding: 30px; border: 2px solid #333; background: #fafafa; }
+      .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+      .field { grid-column: span 6; }
+      .field.third { grid-column: span 4; }
+      .field.full { grid-column: 1 / -1; }
+      label, legend { display: block; margin-bottom: 7px; font-size: 13px; font-weight: bold; }
+      input, select { width: 100%; height: 44px; padding: 9px 11px; border: 1px solid #777; color: #444; background: #fff; font: inherit; }
+      select[multiple] { height: 118px; }
+      select[multiple] option { padding: 5px; }
+      .help { display: block; margin-top: 6px; color: #666; font-size: 11px; }
+      .actions { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; padding-top: 22px; border-top: 1px solid #bbb; }
+      .actions p { margin: 0; color: #555; font-size: 12px; }
+      button { min-width: 230px; height: 46px; border: 2px solid #222; color: #fff; background: #444; font-size: 14px; font-weight: bold; }
+      .annotation { margin-top: 18px; padding: 12px 15px; border-left: 4px solid #777; color: #555; background: #f1f1f1; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="context">Hotel Las Gaviotas · Vista del huésped</p>
+      <h1>Formulario de reserva</h1>
+      <p class="intro">El usuario completa sus datos personales, define su estadía y selecciona los servicios adicionales.</p>
+
+      <section class="wireframe" aria-label="Mockup del formulario">
+        <div class="grid">
+          <div class="field">
+            <label for="nombre">Nombre completo *</label>
+            <input id="nombre" type="text" placeholder="Ej.: Ana Rodríguez" />
+          </div>
+          <div class="field">
+            <label for="correo">Correo electrónico *</label>
+            <input id="correo" type="email" placeholder="Ej.: ana@email.com" />
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono *</label>
+            <input id="telefono" type="tel" placeholder="Ej.: +598 99 123 456" />
+          </div>
+          <div class="field third">
+            <label for="entrada">Fecha de entrada *</label>
+            <input id="entrada" type="date" />
+          </div>
+          <div class="field third">
+            <label for="salida">Fecha de salida *</label>
+            <input id="salida" type="date" />
+          </div>
+          <div class="field">
+            <label for="habitacion">Tipo de habitación *</label>
+            <select id="habitacion">
+              <option>Seleccionar habitación</option>
+              <option>Simple</option>
+              <option>Doble</option>
+              <option>Con jardín</option>
+              <option>Suite Las Gaviotas</option>
+            </select>
+          </div>
+          <div class="field third">
+            <label for="huespedes">Cantidad de huéspedes *</label>
+            <input id="huespedes" type="number" value="2" />
+          </div>
+          <div class="field third">
+            <label for="pago">Forma de pago *</label>
+            <select id="pago">
+              <option>Seleccionar</option>
+              <option>Tarjeta</option>
+              <option>Transferencia</option>
+              <option>Efectivo</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="servicios">Servicios adicionales — selección múltiple</label>
+            <select id="servicios" multiple>
+              <option>Desayuno buffet</option>
+              <option>Traslado al aeropuerto</option>
+              <option>Estacionamiento</option>
+              <option>Limpieza adicional</option>
+            </select>
+            <small class="help">El usuario puede seleccionar ninguno, uno o varios servicios.</small>
+          </div>
+        </div>
+        <div class="actions">
+          <p>* Campos obligatorios</p>
+          <button type="button">SOLICITAR RESERVA</button>
+        </div>
+      </section>
+      <p class="annotation"><strong>Resultado esperado:</strong> al enviar un formulario válido, la reserva se almacena localmente y se muestra una confirmación con el resumen de la solicitud.</p>
+    </main>
+  </body>
+</html>

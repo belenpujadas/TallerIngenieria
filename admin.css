@@ -1,0 +1,93 @@
+.admin-body { min-height: 100vh; background: #eef4f3; }
+.login-view { position: relative; display: grid; min-height: 100vh; place-items: center; background: var(--cream); }
+.login-page-logo { position: absolute; z-index: 2; top: 44px; left: 54px; color: var(--navy); }
+.login-page-logo > i { width: 52px; height: 52px; font-size: 1.5rem; }
+.login-page-logo strong { font-size: 1.5rem; }
+.login-page-logo small { color: var(--navy-soft); }
+.back-link { position: absolute; bottom: 54px; left: 54px; color: var(--navy); font-weight: 600; text-decoration: none; }
+.back-link i { margin-right: 8px; }
+.login-form-panel { display: grid; width: 100%; min-height: 100vh; padding: 120px 40px; place-items: center; }
+.login-form { width: min(100%, 420px); padding: 45px; background: white; box-shadow: var(--shadow); }
+.login-icon { display: grid; width: 54px; height: 54px; margin-bottom: 24px; place-items: center; border-radius: 50%; color: var(--turquoise-dark); background: #ddf0ed; font-size: 1.35rem; }
+.login-form h2 { font-size: 2.5rem; }
+.login-form > p:not(.eyebrow, .login-message) { margin: 12px 0 30px; color: var(--muted); }
+.input-icon { position: relative; margin-bottom: 20px; }
+.input-icon i { position: absolute; z-index: 2; top: 50%; left: 15px; color: var(--turquoise-dark); transform: translateY(-50%); }
+.input-icon .form-control { padding-left: 43px; }
+.login-message { min-height: 24px; margin: -5px 0 10px; color: #bd3e34; font-size: .82rem; }
+
+.admin-header { position: sticky; z-index: 20; top: 0; padding: 16px 0; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.96); backdrop-filter: blur(12px); }
+.admin-header .container-fluid, .admin-content { max-width: 1600px; padding-right: 34px; padding-left: 34px; }
+.admin-header .container-fluid { display: flex; align-items: center; justify-content: space-between; }
+.admin-user { display: flex; align-items: center; gap: 22px; }
+.admin-user span { text-align: right; }
+.admin-user small, .admin-user strong { display: block; }
+.admin-user small { color: var(--muted); font-size: .68rem; }
+.admin-user strong { color: var(--navy); }
+.btn-outline-admin { border: 1px solid var(--line); color: var(--navy); background: white; }
+.btn-outline-admin:hover { color: white; background: var(--navy); }
+.admin-content { padding-top: 58px; padding-bottom: 70px; }
+.admin-title { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 35px; }
+.admin-title h1 { margin: 0; color: var(--navy); font-size: clamp(2.6rem, 5vw, 4.5rem); line-height: 1; }
+.admin-title > div:first-child > p:last-child { margin: 14px 0 0; color: var(--muted); }
+.reservation-count { display: flex; align-items: center; gap: 12px; padding: 16px 22px; color: white; background: var(--navy); }
+.reservation-count span { font-family: "Playfair Display", serif; font-size: 2.4rem; line-height: 1; }
+.reservation-count small { max-width: 65px; color: rgba(255,255,255,.65); line-height: 1.2; }
+.table-shell { overflow: hidden; background: white; box-shadow: 0 14px 45px rgba(12,47,61,.08); }
+.table-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; border-bottom: 1px solid var(--line); }
+.table-toolbar h2 { margin: 0; font-family: "DM Sans", sans-serif; font-size: 1.1rem; font-weight: 700; }
+.table-toolbar p { margin: 3px 0 0; color: var(--muted); font-size: .78rem; }
+.data-indicator { color: var(--turquoise-dark); font-size: .78rem; font-weight: 700; }
+.data-indicator i { margin-right: 6px; }
+.admin-table { min-width: 1400px; margin: 0; }
+.admin-table thead th { padding: 14px 16px; border-bottom: 1px solid var(--line); color: var(--muted); background: #f7faf9; font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.admin-table tbody td { padding: 18px 16px; border-color: #e7eeec; color: #40575d; font-size: .78rem; }
+.admin-table .reservation-id { color: var(--navy); font-weight: 700; }
+.admin-table .guest-name { display: block; color: var(--navy); font-weight: 700; white-space: nowrap; }
+.admin-table .guest-date, .contact-data span { display: block; color: var(--muted); font-size: .7rem; }
+.contact-data a { display: block; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.stay-data { white-space: nowrap; }
+.services-data { min-width: 150px; line-height: 1.5; }
+.stay-data i { margin-right: 5px; color: var(--turquoise-dark); }
+.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: 20px; color: #167050; background: #dff4e9; font-size: .68rem; font-weight: 700; }
+.status-badge::before { width: 6px; height: 6px; border-radius: 50%; background: currentColor; content: ""; }
+.status-badge.cancelled { color: #97534b; background: #f6e4e1; }
+.cancel-button { padding: 7px 10px; border: 1px solid #e7b5af; color: #aa4036; background: transparent; font-size: .7rem; }
+.cancel-button:hover { color: white; background: #aa4036; }
+.cancel-button:disabled { border-color: transparent; color: #96a4a5; background: #eef2f1; }
+.cancelled-row { opacity: .68; }
+.empty-state { padding: 70px 20px; color: var(--muted); text-align: center; }
+.empty-state i { color: #a7bfba; font-size: 3rem; }
+.empty-state h3 { margin: 12px 0 4px; color: var(--navy); }
+
+.cancel-modal .modal-content { border: 0; border-radius: 8px; box-shadow: 0 28px 80px rgba(5,28,38,.3); }
+.cancel-modal .modal-body { padding: 40px; text-align: center; background: var(--cream); }
+.cancel-icon { display: grid; width: 62px; height: 62px; margin: 0 auto 20px; place-items: center; border-radius: 50%; color: #a64238; background: #f6ddd9; font-size: 1.5rem; }
+.cancel-modal h2 { font-size: 2rem; }
+.cancel-modal .modal-body > p:not(.eyebrow) { margin: 16px 0 28px; color: var(--muted); }
+.cancel-actions { display: flex; justify-content: center; gap: 10px; }
+.cancel-actions .btn { flex: 1; }
+
+@media (max-width: 991.98px) {
+  .login-page-logo { top: 36px; left: 36px; }
+  .back-link { bottom: 36px; left: 36px; }
+  .login-form-panel { padding: 120px 24px 100px; }
+  .admin-title { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 575.98px) {
+  .login-page-logo { top: 24px; left: 24px; }
+  .login-page-logo > i { width: 44px; height: 44px; font-size: 1.25rem; }
+  .login-page-logo strong { font-size: 1.2rem; }
+  .back-link { bottom: 26px; left: 24px; }
+  .login-form-panel { padding: 105px 18px 90px; }
+  .login-form { padding: 30px 24px; }
+  .admin-header .container-fluid, .admin-content { padding-right: 18px; padding-left: 18px; }
+  .admin-user span { display: none; }
+  .admin-user { gap: 8px; }
+  .btn-outline-admin { padding: .65rem .8rem; font-size: 0; }
+  .btn-outline-admin i { font-size: 1rem; }
+  .table-toolbar { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .cancel-modal .modal-body { padding: 32px 22px; }
+  .cancel-actions { flex-direction: column-reverse; }
+}
